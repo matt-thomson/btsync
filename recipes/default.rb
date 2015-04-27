@@ -145,6 +145,8 @@ when "arm"
   download_url << "https://download-cdn.getsync.com/stable/linux-arm/BitTorrent-Sync_arm.tar.gz"
 end
 
+package 'tar'
+
 remote_file "#{Chef::Config[:file_cache_path]}/btsync.tar.gz" do
   source download_url
   backup false
