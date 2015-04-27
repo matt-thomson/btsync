@@ -41,6 +41,7 @@ status() {
     dbpid=`pgrep -fu $btsuser $DAEMON`
     if [ -z "$dbpid" ]; then
       echo "BittorrentSync for USER $btsuser: not running."
+      exit 1
     else
       echo "BittorrentSync for USER $btsuser: running (pid $dbpid)"
     fi
