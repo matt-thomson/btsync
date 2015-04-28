@@ -164,20 +164,6 @@ end
 
 
 service 'btsync' do
-  case node['platform']
-  when "centos", "redhat", "amazon", "scientific", "oracle"
-    service_name 'btsync'
-    restart_command '/sbin/service btsync restart && sleep 1'
-    reload_command '/sbin/service btsync reload && sleep 1'
-  when 'debian','ubuntu', 'raspbian'
-    service_name 'btsync'
-    restart_command '/usr/sbin/invoke-rc.d btsync restart && sleep 1'
-    reload_command '/usr/sbin/invoke-rc.d btsync reload && sleep 1'
-  when 'arch'
-    service_name 'btsync'
-  when 'freebsd'
-    service_name 'btsync'
-  end
   supports [:restart, :reload, :status]
-  action :enable
+  action [:enable, :start]
 end
