@@ -17,6 +17,10 @@
 # limitations under the License.
 #
 
+user node['btsync']['setup']['user'] do
+  action :create
+end
+
 directory "#{node['btsync']['main_options']['storage_path']}" do
   owner node['btsync']['setup']['user']
   group node['btsync']['setup']['group']
