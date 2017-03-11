@@ -142,11 +142,11 @@ end
 download_url = ""
 case node["languages"]["ruby"]["host_cpu"]
 when "x86_64"
-  download_url << "https://download-cdn.getsync.com/stable/linux-x64/BitTorrent-Sync_x64.tar.gz"
+  download_url << "https://download-cdn.resilio.com/stable/linux-x64/resilio-sync_x64.tar.gz"
 when "i686"
-  download_url << "https://download-cdn.getsync.com/stable/linux-i386/BitTorrent-Sync_i386.tar.gz"
+  download_url << "https://download-cdn.resilio.com/stable/linux-i386/resilio-sync_i386.tar.gz"
 when "arm"
-  download_url << "https://download-cdn.getsync.com/stable/linux-arm/BitTorrent-Sync_arm.tar.gz"
+  download_url << "https://download-cdn.resilio.com/stable/linux-arm/resilio-sync_arm.tar.gz"
 end
 
 package 'tar'
@@ -160,7 +160,7 @@ end
 
 execute "Unpack BTSYNC Tarball" do
   cwd "#{Chef::Config[:file_cache_path]}/"
-  command "tar -xvzf #{Chef::Config[:file_cache_path]}/btsync.tar.gz; mv btsync #{node['btsync']['setup']['bin_dir']}/ && chmod +x #{node['btsync']['setup']['bin_dir']}/btsync"
+  command "tar -xvzf #{Chef::Config[:file_cache_path]}/btsync.tar.gz; mv rslsync #{node['btsync']['setup']['bin_dir']}/btsync && chmod +x #{node['btsync']['setup']['bin_dir']}/btsync"
   creates node['btsync']['setup']['bin_dir']+"/btsync"
   action :nothing
   notifies :restart, "service[btsync]", :immediately
